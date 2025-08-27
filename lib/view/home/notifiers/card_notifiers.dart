@@ -48,6 +48,7 @@ class CardNotifier extends Notifier<CardState> {
     state = state.copyWith(addCarLoadState: LoadState.loading);
     try {
       await _userRepository.createCard(
+        userId:  _authRepository.currentUser?.uid ?? 'Unknown',
         params: params,
         creatorName: _authRepository.currentUser?.displayName ?? 'Unknown',
       );

@@ -179,6 +179,7 @@ class _ScanState extends ConsumerState<Scan> {
                     )
                   : GestureDetector(
                       onTap: () {
+                        ref.read(homeNotifierProvider.notifier).resetState();
                         showModalBottomSheet<void>(
                           isScrollControlled: true,
                           context: context,

@@ -44,7 +44,7 @@ class HomeNotifier extends AutoDisposeNotifier<HomeState> {
 
   resetState() {
     state = HomeState(
-      addCarLoadState: state.addCarLoadState,
+      addCarLoadState: LoadState.idle,
       scanLoadState: LoadState.idle,
       scanResult: null,
     );

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:myid_scan/core/data/repository/auth_repository.dart';
 import 'package:myid_scan/core/utils/failure.dart';
 import 'package:myid_scan/view/authentication/model/app_user.dart';
 import 'package:myid_scan/view/home/model/card_model.dart';
@@ -47,10 +48,14 @@ class UserRepository {
     return getFutureUser(userId);
   }
 
-  Future<void> createCard(
-      {required String creatorName, required CardParams params}) async {
+  Future<void> createCard({
+    required String userId,
+    required String creatorName,
+    required CardParams params,
+  }) async {
     try {
       await cardsCollection.add({
+        'userId': userId,
         'creatorName': creatorName,
         ...params.toMap(),
       });
@@ -59,8 +64,8 @@ class UserRepository {
     }
   }
 
-  Stream<List<Card>> getCards() {
-    return cardsCollection.snapshots().map(
+  Stream<List<Card>> getCards(String userId) {
+    return cardsCollection.where('userId', isEqualTo: userId).snapshots().map(
           (querySnapshot) => querySnapshot.docs
               .map(
                 (queryDocumentSnapshot) =>
@@ -73,5 +78,6 @@ class UserRepository {
 
 final userRepository = Provider<UserRepository>((ref) => UserRepository());
 final cardsProvider = StreamProvider<List<Card>>((ref) {
-  return ref.watch(userRepository).getCards();
+  final id = ref.read(authenticationRepository).currentUser?.uid ?? '';
+  return ref.watch(userRepository).getCards(id);
 });
