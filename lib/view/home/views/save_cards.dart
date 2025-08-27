@@ -56,7 +56,8 @@ class _SaveCardsState extends ConsumerState<SaveCards> {
           }
           return Padding(
             padding: const EdgeInsets.all(24),
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => 12.verticalSpace,
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final card = data[index];

@@ -18,12 +18,12 @@ class CardReceipt extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width,
-            maxHeight: MediaQuery.of(context).size.height * 0.5,
+            maxHeight: MediaQuery.of(context).size.height * 0.6,
           ),
           child: Container(
             height: 700.h,
             color: AppColors.white,
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(24),
             child: Column(
               children: [
                 switch (args.cardId) {
