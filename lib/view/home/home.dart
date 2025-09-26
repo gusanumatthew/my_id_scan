@@ -116,7 +116,15 @@ class _HomeState extends ConsumerState<Home> {
                 borderRadius: BorderRadius.circular(16.r),
                 padding: EdgeInsets.all(40),
               ),
-            )
+            ),
+            const Spacer(),
+            Text(
+                      'Adu Boluwatife Tolani \n2018707010070',
+                      style: context.textTheme.s25w600.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
           ],
         ),
       ),

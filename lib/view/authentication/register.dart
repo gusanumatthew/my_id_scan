@@ -62,7 +62,8 @@ class _RegisterState extends ConsumerState<Register> {
                   color: AppColors.primaryColor,
                 ),
               ),
-              100.verticalSpace,
+              16.verticalSpace,
+              16.verticalSpace,
               Form(
                   key: _formKey,
                   onChanged: () {

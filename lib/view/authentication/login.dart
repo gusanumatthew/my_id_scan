@@ -106,6 +106,14 @@ class _LoginState extends ConsumerState<Login> {
                                 ..onTap =
                                     () => context.pushNamed(AppRouter.signUp))
                         ])),
+                    100.verticalSpace,
+                    Text(
+                      'Adu Boluwatife Tolani \n2018707010070',
+                      style: context.textTheme.s25w600.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ])),
             ],
           ),
